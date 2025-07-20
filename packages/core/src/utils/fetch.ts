@@ -112,6 +112,7 @@ export const fetchFencePresignedURL = async ({
     const response = await fetch(url, {
       method: method,
       headers: headers,
+      credentials: "include",
       ...(signal ? { signal: signal } : {}),
     } as RequestInit);
 
@@ -210,6 +211,7 @@ export const fetchJSONDataFromURL = async <T = unknown>(
   const response = await fetch(url, {
     method,
     headers: requestHeaders,
+    credentials: "include",
     body: ['POST', 'PUT', 'PATCH'].includes(method.toUpperCase())
       ? body
       : undefined,
